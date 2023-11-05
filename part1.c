@@ -54,6 +54,9 @@ void printStructure(Node* root, int level) {
     }
 }
 
+
+
+// Function to change the current folder (similar to cd and cd.. in Linux)
 Node* changeDirectory(Node* currentFolder, const char* folderName, Node* root) {
     if (currentFolder == NULL) {
         printf("Error: Current folder is not set.\n");
@@ -66,17 +69,20 @@ Node* changeDirectory(Node* currentFolder, const char* folderName, Node* root) {
             Node* parent = root;
             Node* child = root->children;
             while (child != NULL) {
-                if (child == currentFolder) {
-                    break;
+                if (child->children == currentFolder) {
+                    return parent;
                 }
-                parent = child;
+                parent = child->children;
                 child = child->sibling;
             }
-            return parent;
+            return currentFolder;  // Already at the root folder
         } else {
             printf("Error: Already at the root folder.\n");
             return currentFolder;
         }
+    } else if (strcmp(folderName, ".") == 0) {
+        // Stay in the current folder (no change)
+        return currentFolder;
     } else {
         // Move to a child folder with the specified name
         Node* child = currentFolder->children;
@@ -90,6 +96,7 @@ Node* changeDirectory(Node* currentFolder, const char* folderName, Node* root) {
         return currentFolder;
     }
 }
+
 void freeStructure(Node* root) {
     if (root == NULL) {
         return;

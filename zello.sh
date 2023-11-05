@@ -1,2 +1,2 @@
-gcc -o zello project.c
+gcc -o zello final.c
 ./zello
