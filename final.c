@@ -75,7 +75,7 @@ Node* changeDirectory(Node* currentFolder, const char* folderName, Node* root) {
                 parent = child->children;
                 child = child->sibling;
             }
-            return currentFolder;  // Already at the root folder
+            return root;  // Already at the root folder
         } else {
             printf("Error: Already at the root folder.\n");
             return currentFolder;
