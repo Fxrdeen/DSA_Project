@@ -232,7 +232,7 @@ void Option2(){
 
     printf("Welcome to the File and Folder System using C!\n");
     printf("Any files and folders made using this program will be reflected in your actual machine OS");
-    printf("Current Directory: %s\n\n", currentDirectory);
+    printf("\nCurrent Directory: %s\n\n", currentDirectory);
 
     while (1) {
         printf("This is the List of Functions that can be performed:\n");
